@@ -3,7 +3,7 @@ import { useInterval } from "./hooks/useInterval";
 import "./App.css";
 
 function App() {
-  const [waterLevels, setWaterLevels] = useState(0); // Keep track of water level hight
+  const [waterLevels, setWaterLevels] = useState(0); // Keep track of water level
   const [error, setError] = useState("");
   // Creating increase and decrease to help stop the intervals
   const [increase, setIncrease] = useState(false);
@@ -20,7 +20,7 @@ function App() {
     setDecrease(true);
   };
 
-  // Increase divHeight by 20
+  // Increase waterLevels by 1 every 2 seconds and adds an element "waterlevel + amount" to waterDivs array
   useInterval(() => {
     if (waterLevels < 5 && increase === true) {
       let blueDiv = `"waterLevel ${waterLevels + 1}"`;
@@ -35,7 +35,7 @@ function App() {
     }
   }, 2000);
 
-  // Decrease divHeight by 20
+  // Decrease waterLevels by 1 every 2 seconds and removes an element from the waterDivs array
   useInterval(() => {
     if (waterLevels > 0 && decrease === true) {
       waterDivs.pop();
