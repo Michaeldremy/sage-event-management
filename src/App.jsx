@@ -23,7 +23,7 @@ function App() {
   // Increase waterLevels by 1 every 2 seconds and adds an element "waterlevel + amount" to waterDivs array
   useInterval(() => {
     if (waterLevels < 5 && increase === true) {
-      let blueDiv = `"waterLevel ${waterLevels + 1}"`;
+      let blueDiv = (waterLevels + 1) * 20;
       waterDivs.push(blueDiv);
       setWaterLevels(waterLevels + 1);
       setError("");
@@ -55,7 +55,9 @@ function App() {
       <button onClick={handleDecreaseWater}>Decrease Water</button>
       <div className="bathtub">
         {waterDivs.map((item, index) => (
-          <div key={index} className="blue-div"></div>
+          <div key={index} className="blue-div">
+            {item} pixels
+          </div>
         ))}
       </div>
     </div>
